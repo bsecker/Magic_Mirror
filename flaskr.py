@@ -63,7 +63,7 @@ class TempSensor(Module):
         self.pin = 4
 
     def get_data(self):
-        """get readings until one is found"""
+        """get readings until one is found. TEST THIS"""
         temperature, humidity = Adafruit_DHT.read_retry(self.sensor, self.pin)
         
         if temperature is not None and humidity is not None:
