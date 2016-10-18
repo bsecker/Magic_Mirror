@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="1800; URL=http://localhost:85/">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>RPi Landing</title>
 
@@ -25,6 +26,9 @@
         var today = new Date();
         var h = today.getHours();
         var m = today.getMinutes();
+
+        if (h > 12) {h=h-12}; // 12 hour time
+
         m = checkTime(m);
         document.getElementById('time').innerHTML = "<p>" +
         h + ":" + m + "</p>";
@@ -46,8 +50,11 @@
         <!-- WEATHER -->
         <div id="weather" class="col-md-4">
           <p>it {{ weather.will_rain }} rain today.</p>
-          <p>{{ weather.o_temp }}° Outside</p>
-          <!-- <p>{{ weather.o_max }} MAX  {{ weather.o_min }} MIN</p> -->
+          <p>{{ weather.temp }}° Outside</p>
+          <p>Max: {{ weather.temp_max }}° Min:{{ weather.temp_min }}°</p>
+          <p>{{ tempsensor[1] }}° Inside</p>
+          <p>{{ weather.status }}</p>
+          <p><i class="wi wi-night-sleet"></i></p>
         </div>
 
         <!-- TIME -->
@@ -60,14 +67,14 @@
       </div>
 
       <!-- GREETING -->
-      <h1 id="greeting" class="text-center">Good {{ greeting }}, {{ name }}!</h1> 
+      <h1 id="greeting" class="text-center">Good {{ approximatetime }}, {{ name }}!</h1> 
 
-      <h1 id="quote" class="text-center">{{ quote }}</h1> 
+      <h1 id="quote" class="text-center">{{ footer }}</h1> 
 
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax /libs/jquery/1.12.4/jquery.min.js"></script>
 
   </body>
 </html>
